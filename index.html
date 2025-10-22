@@ -32,32 +32,35 @@
         <h1 data-i18n-key="main_title">Diagnóstico Retórico-Judicial Gratuito</h1>
         <p class="subtitle" data-i18n-key="subtitle">Descubra el mapa estratégico de su caso en minutos.</p>
 
-        <form name="diagnostico-organon" method="POST" data-netlify="true" action="/gracias.html" id="organon-form">
-            
-            <input type="hidden" name="form_language" id="form_language" value="es">
+        <form 
+            name="diagnostico-organon" 
+            method="POST" 
+            action="https://docs.google.com/forms/d/e/1FAIpQLSfnxLZltJUa4kRchdRCH3n9shBvn3yD-uHr7wZKDLeaed-ONw/formResponse"
+            target="_blank" 
+            id="organon-form">
             
             <div class="form-section">
                 <h2 data-i18n-key="section_essential_title">Información Esencial <span class="badge obligatoria" data-i18n-key="badge_mandatory">Obligatorio</span></h2>
 
                 <div class="question-group">
                     <label for="email_cliente" data-i18n-key="q_email">1. Su Email (para recibir el diagnóstico):</label>
-                    <input type="email" id="email_cliente" name="email_cliente" required data-i18n-placeholder="ph_email">
+                    <input type="email" id="email_cliente" name="entry.1779992151" required data-i18n-placeholder="ph_email">
                 </div>
                 <div class="question-group">
                     <label for="tipo_documento_final" data-i18n-key="q_doc_type">2. ¿Qué documento necesita preparar?</label>
-                    <input type="text" id="tipo_documento_final" name="tipo_documento_final" required data-i18n-placeholder="ph_doc_type">
+                    <input type="text" id="tipo_documento_final" name="entry.1872260482" required data-i18n-placeholder="ph_doc_type">
                 </div>
                 <div class="question-group">
                     <label for="pretension_principal" data-i18n-key="q_pretension">3. ¿Qué le pide exactamente al tribunal?</label>
-                    <textarea id="pretension_principal" name="pretension_principal" required data-i18n-placeholder="ph_pretension"></textarea>
+                    <textarea id="pretension_principal" name="entry.697582332" required data-i18n-placeholder="ph_pretension"></textarea>
                 </div>
                 <div class="question-group">
                     <label for="hechos_nucleares" data-i18n-key="q_facts">4. Enumere los 3 hechos clave que le dan la razón:</label>
-                    <textarea id="hechos_nucleares" name="hechos_nucleares" required data-i18n-placeholder="ph_facts"></textarea>
+                    <textarea id="hechos_nucleares" name="entry.819679773" required data-i18n-placeholder="ph_facts"></textarea>
                 </div>
                 <div class="question-group">
                     <label for="argumento_contrario_fuerte" data-i18n-key="q_refutation">5. ¿Cuál es el argumento MÁS fuerte que usará la parte contraria?</label>
-                    <textarea id="argumento_contrario_fuerte" name="argumento_contrario_fuerte" required></textarea>
+                    <textarea id="argumento_contrario_fuerte" name="entry.1543747636" required></textarea>
                 </div>
             </div>
 
@@ -67,7 +70,7 @@
                 <div class="question-group">
                     <label for="lienzo_blanco" data-i18n-key="q_canvas">"Cuénteme el caso":</label>
                     <p class="description" data-i18n-key="desc_canvas">Explique el caso con sus propias palabras. Cuanto más detalle, más preciso será el diagnóstico.</p>
-                    <textarea id="lienzo_blanco" name="lienzo_blanco" rows="10" data-i18n-placeholder="ph_canvas"></textarea>
+                    <textarea id="lienzo_blanco" name="entry.941077849" rows="10" data-i18n-placeholder="ph_canvas"></textarea>
                 </div>
             </div>
 
@@ -76,23 +79,23 @@
 
                 <div class="question-group">
                     <label for="audiencia_clave" data-i18n-key="q_audience">1. ¿Quién decide? (La audiencia clave):</label>
-                    <input type="text" id="audiencia_clave" name="audiencia_clave" data-i18n-placeholder="ph_audience">
+                    <input type="text" id="audiencia_clave" name="entry.466269221" data-i18n-placeholder="ph_audience">
                 </div>
                 <div class="question-group">
                     <label for="pruebas_principales" data-i18n-key="q_evidence">2. Para cada uno de sus hechos clave, ¿cuál es su prueba principal?</label>
-                    <textarea id="pruebas_principales" name="pruebas_principales" data-i18n-placeholder="ph_evidence"></textarea>
+                    <textarea id="pruebas_principales" name="entry.1823523978" data-i18n-placeholder="ph_evidence"></textarea>
                 </div>
                 <div class="question-group">
                     <label for="normativa_aplicable" data-i18n-key="q_legal_basis">3. ¿Qué normas o artículos principales sustentan su petición?</label>
-                    <textarea id="normativa_aplicable" name="normativa_aplicable" data-i18n-placeholder="ph_legal_basis"></textarea>
+                    <textarea id="normativa_aplicable" name="entry.433743957" data-i18n-placeholder="ph_legal_basis"></textarea>
                 </div>
                 <div class="question-group">
                     <label for="status_causae_pregunta" data-i18n-key="q_status_causae">4. Si tuviera que resumir la disputa principal en una sola pregunta, ¿cuál sería?</label>
-                    <input type="text" id="status_causae_pregunta" name="status_causae_pregunta" data-i18n-placeholder="ph_status_causae">
+                    <input type="text" id="status_causae_pregunta" name="entry.384720792" data-i18n-placeholder="ph_status_causae">
                 </div>
                 <div class="question-group">
                     <label for="genus_causae_olor" data-i18n-key="q_genus_causae">5. ¿Cuál es la "primera impresión" que genera su caso?</label>
-                    <select id="genus_causae_olor" name="genus_causae_olor">
+                    <select id="genus_causae_olor" name="entry.1665425095">
                         <option value="" data-i18n-key="opt_select">-- Seleccione una --</option>
                         <option value="honestum" data-i18n-key="opt_honestum">Caso sólido, la razón es clara.</option>
                         <option value="turpe" data-i18n-key="opt_turpe">Caso impopular, el cliente genera antipatía.</option>
@@ -103,7 +106,7 @@
                 </div>
                 <div class="question-group">
                     <label for="ethos_intrinsico_abogado" data-i18n-key="q_ethos">6. ¿Qué imagen quiere proyectar usted como abogado?</label>
-                    <select id="ethos_intrinsico_abogado" name="ethos_intrinsico_abogado">
+                    <select id="ethos_intrinsico_abogado" name="entry.301960182">
                         <option value="" data-i18n-key="opt_select">-- Seleccione una --</option>
                         <option value="experto_tecnico" data-i18n-key="opt_ethos_expert">Experto técnico, riguroso.</option>
                         <option value="defensor_justo" data-i18n-key="opt_ethos_just">Defensor razonable, buscando justicia.</option>
@@ -113,11 +116,11 @@
                 </div>
                 <div class="question-group">
                     <label for="pathos_objetivo" data-i18n-key="q_pathos">7. Al terminar de leer, ¿qué emoción o pensamiento principal debe tener el juez?</label>
-                    <input type="text" id="pathos_objetivo" name="pathos_objetivo" data-i18n-placeholder="ph_pathos">
+                    <input type="text" id="pathos_objetivo" name="entry.266016190" data-i18n-placeholder="ph_pathos">
                 </div>
                 <div class="question-group">
                     <label for="otros_comentarios" data-i18n-key="q_other">8. ¿Hay algo más que debamos saber?</label>
-                    <textarea id="otros_comentarios" name="otros_comentarios" rows="5"></textarea>
+                    <textarea id="otros_comentarios" name="entry.1437119433" rows="5"></textarea>
                 </div>
             </div> 
 
