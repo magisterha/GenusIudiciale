@@ -50,4 +50,5 @@
     "q_other": "8. ¿Hay algo más que debamos saber?",
     "btn_prev_question": "Anterior",
     "btn_complete_form": "Completar el Formulario"
+    "privacy_notice": "Al hacer clic en \"Completar\", acepta que los datos anónimos de su caso (sin emails ni nombres) se utilicen para fines de investigación y mejora de este modelo de IA experimental. Sus datos se tratan con confidencialidad."
 }
