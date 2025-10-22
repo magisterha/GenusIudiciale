@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // Al mostrar una nueva sección, activa su *primera* pregunta
         if (sections[index]) {
-            // Pasamos el índice de la sección para la lógica de botones
             showQuestion(sections[index], 0, index); 
         }
     }
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
             q.classList.toggle('active', i === questionIndex);
         });
 
-        // --- LÓGICA DE BOTONES CORREGIDA ---
         const isLastQuestion = (questionIndex === questions.length - 1);
         const isLastSection = (sectionIndex === sections.length - 1);
 
@@ -36,12 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (nextQuestionBtn) {
-            // Ocultar "Siguiente" SÓLO si es la última pregunta de la ÚLTIMA sección
             nextQuestionBtn.style.display = (isLastQuestion && isLastSection) ? 'none' : 'inline-block';
         }
         
         if (submitFinalBtn) {
-            // Mostrar "Completar" SÓLO si es la última pregunta de la ÚLTIMA sección
             submitFinalBtn.style.display = (isLastQuestion && isLastSection) ? 'inline-block' : 'none';
         }
     }
@@ -53,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const input = currentQuestion.querySelector('input, textarea, select');
         
         if (input && input.hasAttribute('required') && !input.value.trim()) {
-            // Usamos la traducción del navegador para el alert
             const alertMsg = (document.documentElement.lang === 'es') ? 'Por favor, complete esta pregunta obligatoria.' : 'Please complete this mandatory question.';
             alert(alertMsg);
             input.focus();
@@ -63,7 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- Event Listeners para toda la navegación ---
+    // Este único 'click' listener maneja TODO
     form.addEventListener('click', (e) => {
+        
         const currentSection = sections[currentSectionIndex];
         const questions = currentSection.querySelectorAll('.question-group');
         let currentQuestionIndex = Array.from(questions).findIndex(q => q.classList.contains('active'));
@@ -74,11 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 return; // Detiene si la validación falla
             }
             
-            // Si hay más preguntas en ESTA sección
             if (currentQuestionIndex < questions.length - 1) {
                 showQuestion(currentSection, currentQuestionIndex + 1, currentSectionIndex);
             } 
-            // Si es la última pregunta de esta sección (y NO es la última sección)
             else if (currentSectionIndex < sections.length - 1) {
                 currentSectionIndex++;
                 showSection(currentSectionIndex);
@@ -104,25 +99,27 @@ document.addEventListener('DOMContentLoaded', function() {
             showSection(currentSectionIndex);
         }
 
-        // Botón "Saltar y Completar" (del Lienzo) o "Completar Formulario" (Final)
-        // No necesitan lógica de click aquí, ya que su tipo "submit" activa el evento 'submit'
+        // Botón "Completar el Formulario" (Final)
+        if (e.target.classList.contains('submit-final')) {
+            // Esta es la validación final.
+            // La validación de campos opcionales no es necesaria, 
+            // pero la mantenemos por si acaso.
+            if (!validateCurrentQuestion()) {
+                e.preventDefault(); // Si falla, DETIENE el envío del formulario.
+            }
+            // Si pasa, no hace NADA, y el botón (que es type="submit")
+            // envía el formulario de forma natural.
+        }
+
+        // Botón "Saltar y Completar" (del Lienzo)
+        if (e.target.classList.contains('submit-now')) {
+            // No necesita validación. Simplemente deja que el botón
+            // (que es type="submit") envíe el formulario.
+        }
     });
 
-    // Validar el formulario ANTES de enviarlo
-    form.addEventListener('submit', (e) => {
-        // Si el envío NO vino del botón "submit-now" (del lienzo)
-        // Y estamos en la última sección
-        if (!e.submitter || !e.submitter.classList.contains('submit-now')) {
-            if (currentSectionIndex === sections.length - 1) {
-                // Validar la última pregunta visible (que son opcionales, así que pasará)
-                if (!validateCurrentQuestion()) {
-                    e.preventDefault(); // Detiene el envío si la última pregunta es inválida
-                }
-            }
-        }
-        // Si es "submit-now", deja que se envíe sin validar opcionales.
-        // Si la validación de la última sección pasa, se envía.
-    });
+    // ¡HEMOS ELIMINADO EL form.addEventListener('submit')!
+    // Esto evita el conflicto con Netlify.
 
     // Inicializa la primera sección y la primera pregunta
     showSection(0);
