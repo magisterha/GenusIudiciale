@@ -179,7 +179,9 @@ textarea {
 .navigation-buttons {
     margin-top: 30px;
     display: flex;
-    justify-content: center; /* Centra el botón */
+    flex-direction: column; /* Apila el aviso y el botón */
+    justify-content: center; 
+    align-items: center; /* Centra todo */
 }
 .nav-btn.submit-final {
     padding: 14px 35px; /* Botón grande */
@@ -192,6 +194,7 @@ textarea {
     transition: background-color 0.3s ease, color 0.3s ease;
     background-color: #6D0000; /* Color Burdeos */
     color: #fff;
+    width: 100%; /* Ocupa todo el ancho */
 }
 .nav-btn.submit-final:hover {
     background-color: #4a0000;
@@ -238,4 +241,19 @@ textarea {
     .nav-btn.submit-final {
         width: 100%; /* Botón de ancho completo en móvil */
     }
+}
+
+/* --- Estilo para el Aviso de Privacidad --- */
+.privacy-notice {
+    font-size: 0.85em;
+    color: #777;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    line-height: 1.5;
+    width: 100%; /* Ocupa todo el ancho */
+    box-sizing: border-box; /* Asegura que el padding no desborde */
 }
