@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,11 +22,13 @@
         <button class="lang-btn" data-lang="en">English</button>
         <button class="lang-btn" data-lang="zh-tw">繁體中文</button>
     </div>
+
     <div class="container">
 
         <div class="emblem-container">
             <img src="lechuza-justiciera.png" alt="Emblema del Organon Judicial">
         </div>
+
         <h1 data-i18n-key="main_title">Diagnóstico Retórico-Judicial Gratuito</h1>
         <p class="subtitle" data-i18n-key="subtitle">Descubra el mapa estratégico de su caso en minutos.</p>
 
@@ -33,117 +36,99 @@
             
             <input type="hidden" name="form_language" id="form_language" value="es">
             
-            <div id="form-sections">
+            <div class="form-section">
+                <h2 data-i18n-key="section_essential_title">Información Esencial <span class="badge obligatoria" data-i18n-key="badge_mandatory">Obligatorio</span></h2>
 
-                <div class="form-step active" data-step="1">
-                    <h2 data-i18n-key="section_essential_title">Información Esencial <span class="badge obligatoria" data-i18n-key="badge_mandatory">Obligatorio</span></h2>
-                    <p class="step-progress" data-i18n-key="progress_essential">Paso 1 de 3</p>
-
-                    <div class="question-group active">
-                        <label for="email_cliente" data-i18n-key="q_email">1. Su Email (para recibir el diagnóstico):</label>
-                        <input type="email" id="email_cliente" name="email_cliente" required data-i18n-placeholder="ph_email">
-                    </div>
-                    <div class="question-group">
-                        <label for="tipo_documento_final" data-i18n-key="q_doc_type">2. ¿Qué documento necesita preparar?</label>
-                        <input type="text" id="tipo_documento_final" name="tipo_documento_final" required data-i18n-placeholder="ph_doc_type">
-                    </div>
-                    <div class="question-group">
-                        <label for="pretension_principal" data-i18n-key="q_pretension">3. ¿Qué le pide exactamente al tribunal?</label>
-                        <textarea id="pretension_principal" name="pretension_principal" required data-i18n-placeholder="ph_pretension"></textarea>
-                    </div>
-                    <div class="question-group">
-                        <label for="hechos_nucleares" data-i18n-key="q_facts">4. Enumere los 3 hechos clave que le dan la razón:</label>
-                        <textarea id="hechos_nucleares" name="hechos_nucleares" required data-i18n-placeholder="ph_facts"></textarea>
-                    </div>
-                    <div class="question-group">
-                        <label for="argumento_contrario_fuerte" data-i18n-key="q_refutation">5. ¿Cuál es el argumento MÁS fuerte que usará la parte contraria?</label>
-                        <textarea id="argumento_contrario_fuerte" name="argumento_contrario_fuerte" required></textarea>
-                    </div>
-                    
-                    <div class="navigation-buttons">
-                        <button type="button" class="nav-btn next-question" data-i18n-key="btn_next">Siguiente</button>
-                    </div>
+                <div class="question-group">
+                    <label for="email_cliente" data-i18n-key="q_email">1. Su Email (para recibir el diagnóstico):</label>
+                    <input type="email" id="email_cliente" name="email_cliente" required data-i18n-placeholder="ph_email">
                 </div>
-
-                <div class="form-step" data-step="2">
-                    <h2 data-i18n-key="section_canvas_title">El Lienzo en Blanco <span class="badge opcional" data-i18n-key="badge_optional">Opcional</span></h2>
-                    <p class="step-progress" data-i18n-key="progress_canvas">Paso 2 de 3</p>
-
-                    <div class="question-group active">
-                        <label for="lienzo_blanco" data-i18n-key="q_canvas">"Cuénteme el caso":</label>
-                        <p class="description" data-i18n-key="desc_canvas">Explique el caso con sus propias palabras. Cuanto más detalle, más preciso será el diagnóstico.</p>
-                        <textarea id="lienzo_blanco" name="lienzo_blanco" rows="10" data-i18n-placeholder="ph_canvas"></textarea>
-                    </div>
-
-                    <div class="navigation-buttons">
-                        <button type="button" class="nav-btn prev-section" data-i18n-key="btn_prev_section">Anterior</button>
-                        <button type="submit" class="nav-btn submit-now" data-i18n-key="btn_skip_complete">Saltar y Completar</button>
-                        <button type="button" class="nav-btn next-section" data-i18n-key="btn_continue">Continuar con Preguntas Adicionales</button>
-                    </div>
+                <div class="question-group">
+                    <label for="tipo_documento_final" data-i18n-key="q_doc_type">2. ¿Qué documento necesita preparar?</label>
+                    <input type="text" id="tipo_documento_final" name="tipo_documento_final" required data-i18n-placeholder="ph_doc_type">
                 </div>
-
-                <div class="form-step" data-step="3">
-                    <h2 data-i18n-key="section_additional_title">Preguntas Adicionales <span class="badge opcional" data-i18n-key="badge_optional">Opcional</span></h2>
-                    <p class="step-progress" data-i18n-key="progress_additional">Paso 3 de 3</p>
-
-                    <div class="question-group active">
-                        <label for="audiencia_clave" data-i18n-key="q_audience">1. ¿Quién decide? (La audiencia clave):</label>
-                        <input type="text" id="audiencia_clave" name="audiencia_clave" data-i18n-placeholder="ph_audience">
-                    </div>
-                    <div class="question-group">
-                        <label for="pruebas_principales" data-i18n-key="q_evidence">2. Para cada uno de sus hechos clave, ¿cuál es su prueba principal?</label>
-                        <textarea id="pruebas_principales" name="pruebas_principales" data-i18n-placeholder="ph_evidence"></textarea>
-                    </div>
-                    <div class="question-group">
-                        <label for="normativa_aplicable" data-i18n-key="q_legal_basis">3. ¿Qué normas o artículos principales sustentan su petición?</label>
-                        <textarea id="normativa_aplicable" name="normativa_aplicable" data-i18n-placeholder="ph_legal_basis"></textarea>
-                    </div>
-                    <div class="question-group">
-                        <label for="status_causae_pregunta" data-i18n-key="q_status_causae">4. Si tuviera que resumir la disputa principal en una sola pregunta, ¿cuál sería?</label>
-                        <input type="text" id="status_causae_pregunta" name="status_causae_pregunta" data-i18n-placeholder="ph_status_causae">
-                    </div>
-                    <div class="question-group">
-                        <label for="genus_causae_olor" data-i18n-key="q_genus_causae">5. ¿Cuál es la "primera impresión" que genera su caso?</label>
-                        <select id="genus_causae_olor" name="genus_causae_olor">
-                            <option value="" data-i18n-key="opt_select">-- Seleccione una --</option>
-                            <option value="honestum" data-i18n-key="opt_honestum">Caso sólido, la razón es clara.</option>
-                            <option value="turpe" data-i18n-key="opt_turpe">Caso impopular, el cliente genera antipatía.</option>
-                            <option value="humile" data-i18n-key="opt_humile">Caso menor, difícil de captar la atención.</option>
-                            <option value="anceps" data-i18n-key="opt_anceps">Caso complejo, muy dudoso.</option>
-                            <option value="obscurum" data-i18n-key="opt_obscurum">Caso muy técnico, árido.</option>
-                        </select>
-                    </div>
-                    <div class="question-group">
-                        <label for="ethos_intrinsico_abogado" data-i18n-key="q_ethos">6. ¿Qué imagen quiere proyectar usted como abogado?</label>
-                        <select id="ethos_intrinsico_abogado" name="ethos_intrinsico_abogado">
-                            <option value="" data-i18n-key="opt_select">-- Seleccione una --</option>
-                            <option value="experto_tecnico" data-i18n-key="opt_ethos_expert">Experto técnico, riguroso.</option>
-                            <option value="defensor_justo" data-i18n-key="opt_ethos_just">Defensor razonable, buscando justicia.</option>
-                            <option value="luchador_cliente" data-i18n-key="opt_ethos_fighter">Luchador incansable por el cliente.</option>
-                            <option value="conciliador" data-i18n-key="opt_ethos_conciliator">Conciliador, mostrando cooperación.</option>
-                        </select>
-                    </div>
-                    <div class="question-group">
-                        <label for="pathos_objetivo" data-i18n-key="q_pathos">7. Al terminar de leer, ¿qué emoción o pensamiento principal debe tener el juez?</label>
-                        <input type="text" id="pathos_objetivo" name="pathos_objetivo" data-i18n-placeholder="ph_pathos">
-                    </div>
-                    <div class="question-group">
-                        <label for="otros_comentarios" data-i18n-key="q_other">8. ¿Hay algo más que debamos saber?</label>
-                        <textarea id="otros_comentarios" name="otros_comentarios" rows="5"></textarea>
-                    </div>
-                    
-                    <div class="navigation-buttons">
-                        <button type="button" class="nav-btn prev-question" data-i18n-key="btn_prev_question">Anterior</button>
-                        <button type="button" class="nav-btn next-question" data-i18n-key="btn_next">Siguiente</button>
-                        <button type="submit" class="nav-btn submit-final" data-i18n-key="btn_complete_form">Completar el Formulario</button>
-                    </div>
+                <div class="question-group">
+                    <label for="pretension_principal" data-i18n-key="q_pretension">3. ¿Qué le pide exactamente al tribunal?</label>
+                    <textarea id="pretension_principal" name="pretension_principal" required data-i18n-placeholder="ph_pretension"></textarea>
                 </div>
+                <div class="question-group">
+                    <label for="hechos_nucleares" data-i18n-key="q_facts">4. Enumere los 3 hechos clave que le dan la razón:</label>
+                    <textarea id="hechos_nucleares" name="hechos_nucleares" required data-i18n-placeholder="ph_facts"></textarea>
+                </div>
+                <div class="question-group">
+                    <label for="argumento_contrario_fuerte" data-i18n-key="q_refutation">5. ¿Cuál es el argumento MÁS fuerte que usará la parte contraria?</label>
+                    <textarea id="argumento_contrario_fuerte" name="argumento_contrario_fuerte" required></textarea>
+                </div>
+            </div>
 
+            <div class="form-section">
+                <h2 data-i18n-key="section_canvas_title">El Lienzo en Blanco <span class="badge opcional" data-i18n-key="badge_optional">Opcional</span></h2>
+
+                <div class="question-group">
+                    <label for="lienzo_blanco" data-i18n-key="q_canvas">"Cuénteme el caso":</label>
+                    <p class="description" data-i18n-key="desc_canvas">Explique el caso con sus propias palabras. Cuanto más detalle, más preciso será el diagnóstico.</p>
+                    <textarea id="lienzo_blanco" name="lienzo_blanco" rows="10" data-i18n-placeholder="ph_canvas"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 data-i18n-key="section_additional_title">Preguntas Adicionales <span class="badge opcional" data-i18n-key="badge_optional">Opcional</span></h2>
+
+                <div class="question-group">
+                    <label for="audiencia_clave" data-i18n-key="q_audience">1. ¿Quién decide? (La audiencia clave):</label>
+                    <input type="text" id="audiencia_clave" name="audiencia_clave" data-i18n-placeholder="ph_audience">
+                </div>
+                <div class="question-group">
+                    <label for="pruebas_principales" data-i18n-key="q_evidence">2. Para cada uno de sus hechos clave, ¿cuál es su prueba principal?</label>
+                    <textarea id="pruebas_principales" name="pruebas_principales" data-i18n-placeholder="ph_evidence"></textarea>
+                </div>
+                <div class="question-group">
+                    <label for="normativa_aplicable" data-i18n-key="q_legal_basis">3. ¿Qué normas o artículos principales sustentan su petición?</label>
+                    <textarea id="normativa_aplicable" name="normativa_aplicable" data-i18n-placeholder="ph_legal_basis"></textarea>
+                </div>
+                <div class="question-group">
+                    <label for="status_causae_pregunta" data-i18n-key="q_status_causae">4. Si tuviera que resumir la disputa principal en una sola pregunta, ¿cuál sería?</label>
+                    <input type="text" id="status_causae_pregunta" name="status_causae_pregunta" data-i18n-placeholder="ph_status_causae">
+                </div>
+                <div class="question-group">
+                    <label for="genus_causae_olor" data-i18n-key="q_genus_causae">5. ¿Cuál es la "primera impresión" que genera su caso?</label>
+                    <select id="genus_causae_olor" name="genus_causae_olor">
+                        <option value="" data-i18n-key="opt_select">-- Seleccione una --</option>
+                        <option value="honestum" data-i18n-key="opt_honestum">Caso sólido, la razón es clara.</option>
+                        <option value="turpe" data-i18n-key="opt_turpe">Caso impopular, el cliente genera antipatía.</option>
+                        <option value="humile" data-i18n-key="opt_humile">Caso menor, difícil de captar la atención.</option>
+                        <option value="anceps" data-i18n-key="opt_anceps">Caso complejo, muy dudoso.</option>
+                        <option value="obscurum" data-i18n-key="opt_obscurum">Caso muy técnico, árido.</option>
+                    </select>
+                </div>
+                <div class="question-group">
+                    <label for="ethos_intrinsico_abogado" data-i18n-key="q_ethos">6. ¿Qué imagen quiere proyectar usted como abogado?</label>
+                    <select id="ethos_intrinsico_abogado" name="ethos_intrinsico_abogado">
+                        <option value="" data-i18n-key="opt_select">-- Seleccione una --</option>
+                        <option value="experto_tecnico" data-i18n-key="opt_ethos_expert">Experto técnico, riguroso.</option>
+                        <option value="defensor_justo" data-i18n-key="opt_ethos_just">Defensor razonable, buscando justicia.</option>
+                        <option value="luchador_cliente" data-i18n-key="opt_ethos_fighter">Luchador incansable por el cliente.</option>
+                        <option value="conciliador" data-i18n-key="opt_ethos_conciliator">Conciliador, mostrando cooperación.</option>
+                    </select>
+                </div>
+                <div class="question-group">
+                    <label for="pathos_objetivo" data-i18n-key="q_pathos">7. Al terminar de leer, ¿qué emoción o pensamiento principal debe tener el juez?</label>
+                    <input type="text" id="pathos_objetivo" name="pathos_objetivo" data-i18n-placeholder="ph_pathos">
+                </div>
+                <div class="question-group">
+                    <label for="otros_comentarios" data-i18n-key="q_other">8. ¿Hay algo más que debamos saber?</label>
+                    <textarea id="otros_comentarios" name="otros_comentarios" rows="5"></textarea>
+                </div>
             </div> 
+
+            <div class="navigation-buttons">
+                <button type="submit" class="nav-btn submit-final" data-i18n-key="btn_complete_form">Completar el Formulario</button>
+            </div>
+            
         </form>
     </div>
 
     <script src="i18n.js"></script>
-    <script src="script.js"></script>
-</body>
+    
+    </body>
 </html>
