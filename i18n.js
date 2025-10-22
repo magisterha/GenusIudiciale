@@ -3,8 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hiddenLangField = document.getElementById('form_language');
     let currentLang = 'es'; // Idioma por defecto
 
-    // --- INICIO: BASE DE DATOS DE TRADUCCIONES ---
-    // Todas las traducciones viven aquí. No se carga ningún archivo JSON.
+    // --- INICIO: BASE DE DATOS DE TRADUCCIONES (CORREGIDA) ---
     const translations = {
         "es": {
             "main_title": "Diagnóstico Retórico-Judicial Gratuito",
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "q_canvas": "\"Cuénteme el caso\":",
             "desc_canvas": "Explique el caso con sus propias palabras. Cuanto más detalle, más preciso será el diagnóstico.",
             "ph_canvas": "Ej: Mi cliente firmó un contrato el...",
-            "section_additional_title": "Preguntas Adicionales",
+            "section_additional_title": "Preguntas Adicionais",
             "q_audience": "1. ¿Quién decide? (La audiencia clave):",
             "ph_audience": "Ej: Juez de 1ª Instancia, Jurado...",
             "q_evidence": "2. Para cada uno de sus hechos clave, ¿cuál es su prueba principal?",
@@ -341,12 +340,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-i18n-key]').forEach(element => {
             const key = element.dataset.i18nKey;
             if (langData[key]) {
+                // Comprueba si es un placeholder
                 if (element.hasAttribute('data-i18n-placeholder') || element.placeholder) {
                     element.placeholder = langData[key];
                 } else {
                     element.textContent = langData[key];
                 }
             } else {
+                // Advierte en la consola si falta una clave, pero no detiene el script
                 console.warn(`Missing translation key: ${key} for lang: ${currentLang}`);
             }
         });
@@ -354,11 +355,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función principal para cambiar el idioma
     function setLanguage(lang) {
-        if (lang === currentLang && document.documentElement.lang) return; // No hacer nada si ya está activo
+        // Previene la recarga si el idioma ya está activo
+        if (lang === currentLang && document.documentElement.lang === lang) return; 
         
         currentLang = lang;
         const langData = translations[lang]; // Obtiene la traducción directamente del objeto
         
+        if (!langData) {
+            console.error(`Failed to set language: No translations found for '${lang}'`);
+            return; // No hace nada si el idioma no existe en la base de datos
+        }
+
         applyTranslations(langData);
         document.documentElement.lang = lang; // Actualiza el lang del HTML
 
