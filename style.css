@@ -1,7 +1,12 @@
-/* --- Reseteo Básico --- */
+/* --- Fuentes y Estilo Base --- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f7f6;
+    font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    /* Fondo de Mármol Sutil */
+    background-color: #fdfbf5;
+    background-image: url('https://www.transparenttextures.com/patterns/white-marble.png');
+    background-repeat: repeat;
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -10,7 +15,53 @@ body {
     padding: 20px;
     box-sizing: border-box;
     line-height: 1.6;
+    color: #2E2E2E; /* Negro Carbón */
 }
+
+/* --- Tipografía Solemne --- */
+h1, h2 {
+    font-family: 'Playfair Display', "Times New Roman", Times, serif;
+    font-weight: 700;
+    color: #6D0000; /* Burdeos */
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #333; /* Un poco más suave para los títulos de sección */
+    margin-bottom: 20px;
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtitle {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300; /* Más ligero */
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+/* --- Emblema --- */
+.emblem-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.emblem-container img {
+    width: 100px; /* Ajusta el tamaño según necesites */
+    height: auto;
+    opacity: 0.8;
+}
+
 
 /* --- Selector de Idioma --- */
 #lang-selector {
@@ -19,90 +70,75 @@ body {
     text-align: center;
     margin-bottom: 20px;
     padding: 10px;
-    background: #fff;
+    background: #FFFFFF;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
     gap: 5px;
+    border: 1px solid #E0E0E0;
 }
 
 .lang-btn {
-    background-color: #f0f0f0;
+    font-family: 'Lato', sans-serif;
+    background-color: #f9f9f9;
     border: 1px solid #ddd;
     padding: 8px 12px;
     margin: 5px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 0.9em;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s;
 }
 
 .lang-btn:hover {
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
+    border-color: #B89B70; /* Bronce al pasar el ratón */
 }
 
 .lang-btn.active {
-    background-color: #007aff;
+    background-color: #6D0000; /* Burdeos */
     color: #fff;
-    border-color: #007aff;
+    border-color: #6D0000;
     font-weight: bold;
 }
 
-/* --- Contenedor Principal --- */
+/* --- Contenedor Principal (Mármol) --- */
 .container {
     background-color: #ffffff;
     padding: 30px 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 800px;
     box-sizing: border-box;
+    border-top: 5px solid #6D0000; /* Borde Burdeos */
 }
 
-h1 {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    color: #7f8c8d;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.1em;
-}
-
-h2 {
-    color: #34495e;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
+/* --- Badges --- */
 .badge {
+    font-family: 'Lato', sans-serif;
     font-size: 0.8em;
-    padding: 5px 10px;
+    padding: 5px 12px;
     border-radius: 12px;
     font-weight: bold;
     color: #fff;
 }
 
 .badge.obligatoria {
-    background-color: #e74c3c; /* Rojo */
+    background-color: #6D0000; /* Burdeos */
 }
 
 .badge.opcional {
-    background-color: #27ae60; /* Verde */
+    background-color: #B89B70; /* Bronce */
 }
 
 .step-progress {
+    font-family: 'Lato', sans-serif;
     text-align: right;
-    color: #7f8c8d;
+    color: #777;
     font-size: 0.9em;
     margin-top: -30px;
     margin-bottom: 15px;
@@ -110,33 +146,33 @@ h2 {
 
 /* --- Lógica de Pasos y Preguntas --- */
 .form-step {
-    display: none; /* Oculta todas las secciones */
+    display: none;
 }
 .form-step.active {
-    display: block; /* Muestra solo la sección activa */
+    display: block;
 }
-
 .question-group {
     margin-bottom: 25px;
-    display: none; /* Oculta todas las preguntas */
+    display: none;
 }
 .question-group.active {
-    display: block; /* Muestra solo la pregunta activa */
+    display: block;
 }
 
 .description {
     font-size: 0.95em;
-    color: #7f8c8d;
+    color: #555;
     margin-bottom: 10px;
+    font-style: italic;
 }
 
 /* --- Campos de Formulario --- */
 label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 600;
-    color: #34495e;
-    font-size: 1.05em;
+    font-weight: 700;
+    color: #333;
+    font-size: 1.1em;
 }
 
 input[type="text"],
@@ -150,15 +186,16 @@ select {
     font-size: 1em;
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    font-family: inherit;
+    font-family: 'Lato', sans-serif;
+    background-color: #fdfdfd;
 }
 
 input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus,
 select:focus {
-    border-color: #007aff;
-    box-shadow: 0 0 5px rgba(0,122,255,0.2);
+    border-color: #B89B70; /* Foco en Bronce */
+    box-shadow: 0 0 5px rgba(184, 155, 112, 0.4);
     outline: none;
 }
 
@@ -183,31 +220,33 @@ textarea {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s;
 }
 
 /* Botón Siguiente/Continuar (Principal) */
 .nav-btn.next-question,
 .nav-btn.next-section {
-    background-color: #007aff;
+    background-color: #6D0000; /* Burdeos */
     color: #fff;
-    margin-left: auto; /* Alinea a la derecha */
+    margin-left: auto;
 }
 .nav-btn.next-question:hover,
 .nav-btn.next-section:hover {
-    background-color: #005bb5;
+    background-color: #4a0000;
 }
 
 /* Botón Anterior (Secundario) */
 .nav-btn.prev-question,
 .nav-btn.prev-section {
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
     color: #333;
+    border: 1px solid #ddd;
 }
 .nav-btn.prev-question:hover,
 .nav-btn.prev-section:hover {
-    background-color: #c7c7c7;
+    background-color: #e0e0e0;
 }
 
 /* Botones de Envío */
@@ -221,16 +260,10 @@ textarea {
 }
 
 .nav-btn.submit-final {
-    background-color: #27ae60; /* Verde */
+    background-color: #B89B70; /* Bronce */
     color: #fff;
     display: none; /* Oculto hasta la última pregunta */
 }
 .nav-btn.submit-final:hover {
-    background-color: #229954;
-}
-
-/* Ocultar botones cuando no son necesarios */
-.nav-btn.prev-question[style*="display: none;"],
-.nav-btn.prev-section[style*="display: none;"] {
-    display: none !important;
+    background-color: #9a7f5a;
 }
