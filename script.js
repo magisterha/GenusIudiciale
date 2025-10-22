@@ -10,12 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // Al mostrar una nueva sección, activa su *primera* pregunta
         if (sections[index]) {
-            showQuestion(sections[index], 0);
+            // Pasamos el índice de la sección para la lógica de botones
+            showQuestion(sections[index], 0, index); 
         }
     }
 
     // Función para mostrar una pregunta específica *dentro* de una sección
-    function showQuestion(section, questionIndex) {
+    function showQuestion(section, questionIndex, sectionIndex) {
         const questions = section.querySelectorAll('.question-group');
         const nextQuestionBtn = section.querySelector('.next-question');
         const prevQuestionBtn = section.querySelector('.prev-question');
@@ -26,15 +27,22 @@ document.addEventListener('DOMContentLoaded', function() {
             q.classList.toggle('active', i === questionIndex);
         });
 
-        // Lógica de visibilidad de botones DENTRO de la sección
+        // --- LÓGICA DE BOTONES CORREGIDA ---
+        const isLastQuestion = (questionIndex === questions.length - 1);
+        const isLastSection = (sectionIndex === sections.length - 1);
+
         if (prevQuestionBtn) {
             prevQuestionBtn.style.display = (questionIndex === 0) ? 'none' : 'inline-block';
         }
+        
         if (nextQuestionBtn) {
-            nextQuestionBtn.style.display = (questionIndex === questions.length - 1) ? 'none' : 'inline-block';
+            // Ocultar "Siguiente" SÓLO si es la última pregunta de la ÚLTIMA sección
+            nextQuestionBtn.style.display = (isLastQuestion && isLastSection) ? 'none' : 'inline-block';
         }
+        
         if (submitFinalBtn) {
-            submitFinalBtn.style.display = (questionIndex === questions.length - 1) ? 'inline-block' : 'none';
+            // Mostrar "Completar" SÓLO si es la última pregunta de la ÚLTIMA sección
+            submitFinalBtn.style.display = (isLastQuestion && isLastSection) ? 'inline-block' : 'none';
         }
     }
 
@@ -45,7 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const input = currentQuestion.querySelector('input, textarea, select');
         
         if (input && input.hasAttribute('required') && !input.value.trim()) {
-            alert('Por favor, complete esta pregunta obligatoria.');
+            // Usamos la traducción del navegador para el alert
+            const alertMsg = (document.documentElement.lang === 'es') ? 'Por favor, complete esta pregunta obligatoria.' : 'Please complete this mandatory question.';
+            alert(alertMsg);
             input.focus();
             return false;
         }
@@ -61,12 +71,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // Botón "Siguiente Pregunta"
         if (e.target.classList.contains('next-question')) {
             if (!validateCurrentQuestion()) {
-                return;
+                return; // Detiene si la validación falla
             }
+            
+            // Si hay más preguntas en ESTA sección
             if (currentQuestionIndex < questions.length - 1) {
-                showQuestion(currentSection, currentQuestionIndex + 1);
-            } else {
-                // Si es la última pregunta, avanza a la siguiente sección
+                showQuestion(currentSection, currentQuestionIndex + 1, currentSectionIndex);
+            } 
+            // Si es la última pregunta de esta sección (y NO es la última sección)
+            else if (currentSectionIndex < sections.length - 1) {
                 currentSectionIndex++;
                 showSection(currentSectionIndex);
             }
@@ -75,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Botón "Anterior Pregunta"
         if (e.target.classList.contains('prev-question')) {
             if (currentQuestionIndex > 0) {
-                showQuestion(currentSection, currentQuestionIndex - 1);
+                showQuestion(currentSection, currentQuestionIndex - 1, currentSectionIndex);
             }
         }
         
@@ -91,17 +104,8 @@ document.addEventListener('DOMContentLoaded', function() {
             showSection(currentSectionIndex);
         }
 
-        // Botón "Saltar y Completar" (del Lienzo)
-        if (e.target.classList.contains('submit-now')) {
-            // No necesita validación, simplemente envía
-            form.submit();
-        }
-
-        // Botón "Completar Formulario" (Final)
-        if (e.target.classList.contains('submit-final')) {
-            // Este botón es de tipo 'submit' por defecto en el HTML (o debería serlo)
-            // No se necesita JS extra si la validación final se hace al enviar
-        }
+        // Botón "Saltar y Completar" (del Lienzo) o "Completar Formulario" (Final)
+        // No necesitan lógica de click aquí, ya que su tipo "submit" activa el evento 'submit'
     });
 
     // Validar el formulario ANTES de enviarlo
@@ -110,13 +114,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Y estamos en la última sección
         if (!e.submitter || !e.submitter.classList.contains('submit-now')) {
             if (currentSectionIndex === sections.length - 1) {
-                // Validar la última pregunta visible
+                // Validar la última pregunta visible (que son opcionales, así que pasará)
                 if (!validateCurrentQuestion()) {
                     e.preventDefault(); // Detiene el envío si la última pregunta es inválida
                 }
             }
         }
         // Si es "submit-now", deja que se envíe sin validar opcionales.
+        // Si la validación de la última sección pasa, se envía.
     });
 
     // Inicializa la primera sección y la primera pregunta
