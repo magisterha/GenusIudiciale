@@ -42,4 +42,5 @@
     "ph_pathos": "Ex: Indignation, Confiance...",
     "q_other": "8. Y a-t-il autre chose que nous devrions savoir ?",
     "btn_complete_form": "Compléter le Formulaire"
+    "privacy_notice": "En cliquant sur \"Compléter\", vous acceptez que les données anonymes de votre dossier (sans emails ni noms) soient utilisées à des fins de recherche et d'amélioration de ce modèle d'IA expérimental. Vos données sont traitées confidentiellement."
 }
