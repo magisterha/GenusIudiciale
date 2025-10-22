@@ -18,7 +18,7 @@ body {
     color: #2E2E2E; /* Negro Carbón */
 }
 
-/* --- Tipografía Solemne --- */
+/* --- Tipografía Solemne (Tamaños aumentados) --- */
 h1, h2 {
     font-family: 'Playfair Display', "Times New Roman", Times, serif;
     font-weight: 700;
@@ -27,16 +27,16 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 2.2em;
+    font-size: 2.8em; /* Aumentado */
     margin-bottom: 10px;
 }
 
 h2 {
-    font-size: 1.8em;
-    color: #333; /* Un poco más suave para los títulos de sección */
-    margin-bottom: 20px;
+    font-size: 2.1em; /* Aumentado */
+    color: #333;
+    margin-bottom: 25px;
     border-bottom: 1px solid #E0E0E0;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,20 +44,20 @@ h2 {
 
 .subtitle {
     font-family: 'Lato', sans-serif;
-    font-weight: 300; /* Más ligero */
+    font-weight: 300;
     color: #555;
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 1.2em;
+    margin-bottom: 35px;
+    font-size: 1.3em; /* Aumentado */
 }
 
-/* --- Emblema --- */
+/* --- Emblema (Tamaño aumentado) --- */
 .emblem-container {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 .emblem-container img {
-    width: 100px; /* Ajusta el tamaño según necesites */
+    width: 130px; /* Aumentado de 100px */
     height: auto;
     opacity: 0.8;
 }
@@ -95,11 +95,11 @@ h2 {
 
 .lang-btn:hover {
     background-color: #f0f0f0;
-    border-color: #B89B70; /* Bronce al pasar el ratón */
+    border-color: #B89B70;
 }
 
 .lang-btn.active {
-    background-color: #6D0000; /* Burdeos */
+    background-color: #6D0000;
     color: #fff;
     border-color: #6D0000;
     font-weight: bold;
@@ -108,13 +108,13 @@ h2 {
 /* --- Contenedor Principal (Mármol) --- */
 .container {
     background-color: #ffffff;
-    padding: 30px 40px;
+    padding: 40px 50px; /* Aumentado padding L/R */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 800px;
+    max-width: 800px; /* Mantiene el ancho máximo en desktop */
     box-sizing: border-box;
-    border-top: 5px solid #6D0000; /* Borde Burdeos */
+    border-top: 5px solid #6D0000;
 }
 
 /* --- Badges --- */
@@ -128,11 +128,11 @@ h2 {
 }
 
 .badge.obligatoria {
-    background-color: #6D0000; /* Burdeos */
+    background-color: #6D0000;
 }
 
 .badge.opcional {
-    background-color: #B89B70; /* Bronce */
+    background-color: #B89B70;
 }
 
 .step-progress {
@@ -145,19 +145,10 @@ h2 {
 }
 
 /* --- Lógica de Pasos y Preguntas --- */
-.form-step {
-    display: none;
-}
-.form-step.active {
-    display: block;
-}
-.question-group {
-    margin-bottom: 25px;
-    display: none;
-}
-.question-group.active {
-    display: block;
-}
+.form-step { display: none; }
+.form-step.active { display: block; }
+.question-group { margin-bottom: 25px; display: none; }
+.question-group.active { display: block; }
 
 .description {
     font-size: 0.95em;
@@ -166,13 +157,13 @@ h2 {
     font-style: italic;
 }
 
-/* --- Campos de Formulario --- */
+/* --- Campos de Formulario (Tamaños aumentados) --- */
 label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-weight: 700;
     color: #333;
-    font-size: 1.1em;
+    font-size: 1.2em; /* Aumentado */
 }
 
 input[type="text"],
@@ -180,10 +171,10 @@ input[type="email"],
 textarea,
 select {
     width: 100%;
-    padding: 12px;
+    padding: 15px; /* Aumentado */
     border: 1px solid #dcdcdc;
     border-radius: 5px;
-    font-size: 1em;
+    font-size: 1.1em; /* Aumentado */
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     font-family: 'Lato', sans-serif;
@@ -194,17 +185,17 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 textarea:focus,
 select:focus {
-    border-color: #B89B70; /* Foco en Bronce */
+    border-color: #B89B70;
     box-shadow: 0 0 5px rgba(184, 155, 112, 0.4);
     outline: none;
 }
 
 textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px; /* Aumentado */
 }
 
-/* --- Botones de Navegación --- */
+/* --- Botones de Navegación (Tamaños aumentados) --- */
 .navigation-buttons {
     margin-top: 30px;
     display: flex;
@@ -215,8 +206,8 @@ textarea {
 }
 
 .nav-btn {
-    padding: 12px 25px;
-    font-size: 1em;
+    padding: 14px 28px; /* Aumentado */
+    font-size: 1.05em; /* Aumentado */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -225,10 +216,9 @@ textarea {
     transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s;
 }
 
-/* Botón Siguiente/Continuar (Principal) */
 .nav-btn.next-question,
 .nav-btn.next-section {
-    background-color: #6D0000; /* Burdeos */
+    background-color: #6D0000;
     color: #fff;
     margin-left: auto;
 }
@@ -237,7 +227,6 @@ textarea {
     background-color: #4a0000;
 }
 
-/* Botón Anterior (Secundario) */
 .nav-btn.prev-question,
 .nav-btn.prev-section {
     background-color: #f0f0f0;
@@ -249,7 +238,6 @@ textarea {
     background-color: #e0e0e0;
 }
 
-/* Botones de Envío */
 .nav-btn.submit-now {
     background-color: #f0f0f0;
     color: #333;
@@ -260,10 +248,79 @@ textarea {
 }
 
 .nav-btn.submit-final {
-    background-color: #B89B70; /* Bronce */
+    background-color: #B89B70;
     color: #fff;
-    display: none; /* Oculto hasta la última pregunta */
+    display: none;
 }
 .nav-btn.submit-final:hover {
     background-color: #9a7f5a;
+}
+
+/*
+================================================================
+INICIO: DISEÑO RESPONSIVO (VERSIÓN MÓVIL)
+Reglas para pantallas de 768px o menos (tablets y móviles)
+================================================================
+*/
+@media (max-width: 768px) {
+    
+    body {
+        padding: 10px; /* Menos padding en el fondo */
+    }
+
+    #lang-selector {
+        padding: 5px;
+    }
+    .lang-btn {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+
+    .container {
+        padding: 25px 20px; /* Menos padding dentro del contenedor */
+    }
+
+    .emblem-container img {
+        width: 90px; /* Emblema más pequeño en móvil */
+    }
+
+    h1 {
+        font-size: 2em; /* Título más pequeño */
+    }
+
+    h2 {
+        font-size: 1.7em; /* Título de sección más pequeño */
+    }
+
+    .subtitle {
+        font-size: 1.1em;
+    }
+
+    label {
+        font-size: 1.1em; /* Ligeramente más pequeño */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        padding: 12px; /* Padding de campo más normal */
+        font-size: 1em;
+    }
+    
+    /* --- Botones en Móvil (Clave) --- */
+    .navigation-buttons {
+        flex-direction: column-reverse; /* Apila los botones verticalmente */
+        gap: 12px;
+    }
+
+    .nav-btn {
+        width: 100%; /* Botones de ancho completo, fáciles de pulsar */
+        box-sizing: border-box;
+    }
+
+    .nav-btn.next-question,
+    .nav-btn.next-section {
+        margin-left: 0; /* Resetea el margen de desktop */
+    }
 }
